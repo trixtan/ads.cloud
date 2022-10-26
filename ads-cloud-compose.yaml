@@ -1,0 +1,16 @@
+version: '2.2'
+
+services:
+        ads-cloud:
+                restart: always
+                image: ads-cloud:latest
+                environment:
+                        - VIRTUAL_HOST=.theia.n-ri.co
+                        - VIRTUAL_PORT=3000
+                        - LETSENCRYPT_HOST=theia.n-ri.co
+                networks:
+                        - proxy-tier
+networks:
+        proxy-tier:
+                external:
+                        name: nginx-proxy
